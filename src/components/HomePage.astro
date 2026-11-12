@@ -1,16 +1,16 @@
 ---
 // The whole home page, shared by "/" and "/es/". Each section of V2
-// will become its own component and be added here during the migration.
+// becomes its own component and is added here during the migration.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import { useTranslations, type Lang } from '../i18n/ui';
+import Hero from './Hero.astro';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(lang);
 ---
 
 <BaseLayout lang={lang}>
@@ -18,10 +18,7 @@ const t = useTranslations(lang);
     <LanguageSwitcher lang={lang} />
   </header>
   <main>
-    <section class="hero">
-      <h1>Antonio Beltrán</h1>
-      <p class="hero__role">{t('hero.role')}</p>
-    </section>
+    <Hero lang={lang} />
   </main>
 </BaseLayout>
 
@@ -30,22 +27,5 @@ const t = useTranslations(lang);
     display: flex;
     justify-content: flex-end;
     padding: var(--spacing-medium);
-  }
-
-  .hero {
-    display: grid;
-    place-content: center;
-    gap: var(--spacing-small);
-    min-height: 80dvh;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: var(--font-size-extralarge);
-    color: var(--title-color);
-  }
-
-  .hero__role {
-    font-size: var(--font-size-big);
   }
 </style>
