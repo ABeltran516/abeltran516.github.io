@@ -1,0 +1,83 @@
+/* Global styles: reset + design tokens. Component styles live inside each .astro file. */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --main-color: oklch(0.6762 0.213 18.84);
+    --title-color: oklch(0.282 0.1908 266.51);
+    --text-color: oklch(0.4907 0.0556 286.77);
+    --body-color: oklch(0.9794 0.0082 301.36);
+    --container-color: oklch(1 0 0);
+    --container-neo-color: oklch(0.956 0.004 286.32);
+    --border-color: oklch(0 0 0 / 5%);
+    --focus-color: var(--title-color);
+
+    /* Shape colors */
+    --shape-color-red: oklch(0.6955 0.1964 17.38);
+    --shape-color-yellow: oklch(0.9592 0.1728 107.13);
+    --shape-color-blue: oklch(0.796 0.125 232.3);
+    --shape-color-brown: oklch(0.6719 0.0404 10.02);
+    --shape-color-gray: oklch(0.5716 0.0171 229.17);
+
+    /* Font sizes (1rem = 16px; the 62.5% trick from V2 is gone) */
+    --font-size-small: clamp(0.8rem, 0.7rem + 0.5vw, 1rem);
+    --font-size-regular: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+    --font-size-big: clamp(1.5rem, 1.4rem + 0.5vw, 2rem);
+    --font-size-extralarge: clamp(2rem, 1.8rem + 1vw, 3rem);
+
+    /* Spacing */
+    --spacing-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+    --spacing-small: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+    --spacing-medium: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+    --spacing-big: clamp(1.5rem, 1.4rem + 0.5vw, 2.5rem);
+    --spacing-bigger: clamp(2rem, 1.8rem + 1vw, 4rem);
+
+    /* Effects */
+    --baxis-angle: -15deg;
+    --outer-shadow: -12px -12px 24px #fff, 12px 12px 24px #aab7ca;
+    --inner-shadow: inset -7px -7px 12px #fff, inset 7px 7px 12px #aab7ca;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100dvh;
+    color: var(--text-color);
+    background-color: var(--body-color);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Visible keyboard focus on every interactive element */
+:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
